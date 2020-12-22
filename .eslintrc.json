@@ -1,40 +1,42 @@
 {
   "env": {
-      "es2020": true,
-      "node": true
+      "browser": true,
+      "es6": true
   },
   "extends": [
+      "plugin:react/recommended",
       "airbnb-base",
-      "plugin:@typescript-eslint/recommended",
-      "prettier/@typescript-eslint",
-      "plugin:prettier/recommended"
+      "plugin:@typescript-eslint/recommended"
   ],
+  "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": true
+      },
       "ecmaVersion": 2018,
       "sourceType": "module"
   },
   "plugins": [
-      "@typescript-eslint",
-      "prettier"
+      "react",
+      "react-hooks",
+      "@typescript-eslint"
   ],
   "rules": {
-    "camelcase": "off",
-    // "properties": 0,
-    // "ignoreDestructuring": 1,
-    // "ignoreImports": 1,
-    // "ignoreGlobals": 1,
-    "prettier/prettier": "error",
-    "class-methods-use-this": "off",
-    "@typescript-eslint/camelcase": "off",
-    "@typescript-eslint/no-unused-vars": ["error", {
-      "argsIgnorePattern": "_"
-    }],
-     "import/extensions": [
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "import/prefer-default-export": "off",
+    "no-use-before-define": "off",
+    "import/extensions": [
       "error",
       "ignorePackages",
       {
-        "ts": "never"
+        "ts": "never",
+        "tsx": "never"
       }
     ]
   },

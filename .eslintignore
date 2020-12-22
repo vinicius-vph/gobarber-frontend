@@ -1,3 +1,5 @@
 /*.js
 node_modules/
 dist/
+/src/react-app-envd.ts
+/src/reportWebVitals.ts
