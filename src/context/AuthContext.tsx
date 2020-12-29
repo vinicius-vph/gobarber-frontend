@@ -1,5 +1,5 @@
 import React, { createContext, useCallback } from 'react';
-import api from '../services/apiClient';
+import api from '../services/api';
 
 interface SignInCredentials {
   email: string;
@@ -24,7 +24,7 @@ const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ name: 'Diego', signIn }}>
+    <AuthContext.Provider value={{ name: 'Vinicius', signIn }}>
       {children}
     </AuthContext.Provider>
   );
