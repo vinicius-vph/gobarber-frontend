@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useCallback, useRef } from 'react';
 import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
@@ -16,7 +15,6 @@ import { Container, Content, Background } from './styles';
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  console.log(formRef);
   // eslint-disable-next-line @typescript-eslint/ban-types
   const handleSubmit = useCallback(async (data: object) => {
     try {
@@ -64,7 +62,7 @@ const SignUp: React.FC = () => {
           <Button type="submit">Cadastrar</Button>
         </Form>
 
-        <a href="">
+        <a href="/">
           <FiArrowLeft /> Voltar para logon
         </a>
       </Content>
