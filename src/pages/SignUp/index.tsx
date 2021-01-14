@@ -52,7 +52,7 @@ const SignUp: React.FC = () => {
 
         addToast({
           type: 'success',
-          title: 'Cadastro realzado',
+          title: 'Cadastro realizado',
           description: 'Voce já pode fazer seu logon no GoBarber!',
         });
       } catch (err) {
