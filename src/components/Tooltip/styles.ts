@@ -26,8 +26,8 @@ export const Container = styled.div`
       border-style: solid;
       border-color: #ff9000 transparent;
       border-width: 6px 6px 0 6px;
-      position: absolute;
       top: 100%;
+      position: absolute;
       left: 50%;
       transform: translateX(-50%);
     }
