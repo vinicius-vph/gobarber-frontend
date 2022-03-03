@@ -1,7 +1,4 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/ban-types */
 import React, { useRef, useCallback } from 'react';
-
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
@@ -10,13 +7,11 @@ import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
-
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import logoImg from '../../assets/logo.svg';
 
 import Input from '../../components/Input';
-
 import Button from '../../components/Button';
 
 import { Container, Content, AnimationContainer, Background } from './styles';
@@ -29,11 +24,10 @@ interface SignInFormData {
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { user, signIn } = useAuth();
+  const { signIn } = useAuth();
   const { addToast } = useToast();
-  const history = useHistory();
 
-  console.log(user);
+  const history = useHistory();
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -42,8 +36,8 @@ const SignIn: React.FC = () => {
 
         const schema = Yup.object().shape({
           email: Yup.string()
-            .required('Email é obrigatório')
-            .email('Digite um email válido'),
+            .required('E-mail obrigatório')
+            .email('Digite um e-mail válido'),
           password: Yup.string().required('Senha obrigatória'),
         });
 
@@ -65,25 +59,27 @@ const SignIn: React.FC = () => {
 
           return;
         }
+
         addToast({
           type: 'error',
           title: 'Erro na autenticação',
-          description: 'Ocorreu um erro ao fazer login, cheque as credenciais',
+          description: 'Ocorreu um erro ao fazer login, cheque as credenciais.',
         });
       }
     },
     [signIn, addToast, history],
   );
+
   return (
     <Container>
       <Content>
         <AnimationContainer>
-          <img src={logoImg} alt="Gobarber" />
+          <img src={logoImg} alt="GoBarber" />
+
           <Form ref={formRef} onSubmit={handleSubmit}>
-            <h1>Faça seu login</h1>
+            <h1>Faça seu logon</h1>
 
             <Input name="email" icon={FiMail} placeholder="E-mail" />
-
             <Input
               name="password"
               icon={FiLock}
@@ -93,13 +89,16 @@ const SignIn: React.FC = () => {
 
             <Button type="submit">Entrar</Button>
 
-            <a href="forgot">Esqueci minha senha</a>
+            <Link to="/forgot-password">Esqueci minha senha</Link>
           </Form>
+
           <Link to="/signup">
-            <FiLogIn /> Criar conta
+            <FiLogIn />
+            Criar conta
           </Link>
         </AnimationContainer>
       </Content>
+
       <Background />
     </Container>
   );
